@@ -1,32 +1,38 @@
+//global variables
+var count = 0;
+
+//guess counter declaration
+function guessCounter() {
+  var display = document.getElementById("count");
+  count++;
+  display.innerHTML = count;
+}
 
 $(document).ready(function(){
 	
-	/*--- Display information modal box ---*/
-  	$(".what").click(function(){
-    	$(".overlay").fadeIn(1000);
+	//show modal instructions
+  $(".what").click(function(){
+    $(".overlay").fadeIn(1000);
+  });
 
-  	});
+  //hide modal instructions
+  $("a.close").click(function(){
+  	$(".overlay").fadeOut(1000);
+  });
 
-  	/*--- Hide information modal box ---*/
-  	$("a.close").click(function(){
-  		$(".overlay").fadeOut(1000);
-  	});
-
-	/*---Start a new game---*/
+	//start a new game
 	$("a.new").click(function() {
 		$("#count").text("0");
 		$("#guessList").text("");
 	});
 
-	/*---Number of guesses---*/
-
-	  var count = 0;
-      var display = document.getElementById("count");
-
-      $("#guessButton").click(function(){
-        count++;
-        display.innerHTML = count;
-    });
+	//on click of Guess button
+  $("#guessButton").click(function() {
+    guessCounter(); //update guess counter
+    guessMade(); //display the number just guessed
+    guessFeedback(); //provide hot or cold hint
+  });
+  
 
 });
 
