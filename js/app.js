@@ -1,4 +1,4 @@
-//global variables
+//global variable for guessCounter and newGame
 var count = 0;
 
 //guess counter declaration
@@ -6,6 +6,18 @@ function guessCounter() {
   var display = document.getElementById("count");
   count++;
   display.innerHTML = count;
+}
+
+//new game declaration
+function newGame(){
+    count=0;
+    $("#count").text("0");
+    $("#guessList").text("");
+}
+
+//guess list declaration
+function guessMade() {
+  $("<li>Test</li>").appendTo("#guessList");
 }
 
 $(document).ready(function(){
@@ -22,8 +34,7 @@ $(document).ready(function(){
 
 	//start a new game
 	$("a.new").click(function() {
-		$("#count").text("0");
-		$("#guessList").text("");
+    newGame();
 	});
 
 	//on click of Guess button
