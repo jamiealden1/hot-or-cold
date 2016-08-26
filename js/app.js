@@ -17,7 +17,9 @@ function newGame(){
 
 //guess list declaration
 function guessMade() {
-  $("<li>Test</li>").appendTo("#guessList");
+  event.preventDefault();
+  $("<li>" + $('#userGuess').val() + "</li>").appendTo("#guessList");
+  $('#userGuess').val('');
 }
 
 $(document).ready(function(){
@@ -41,7 +43,7 @@ $(document).ready(function(){
   $("#guessButton").click(function() {
     guessCounter(); //update guess counter
     guessMade(); //display the number just guessed
-    guessFeedback(); //provide hot or cold hint
+    //guessFeedback(); //provide hot or cold hint
   });
   
 
