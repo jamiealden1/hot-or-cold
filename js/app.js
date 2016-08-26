@@ -1,29 +1,46 @@
-//global variable for guessCounter and newGame
+//global variable
 var count = 0;
 
-//guess counter declaration
+function gameNumber(){
+  var randomNumber = Math.floor((Math.random() * 100) + 1);
+  return randomNumber;
+}
+
+function newGame(){
+    count=0;
+    $("#count").text("0");
+    $("#guessList").text("");
+    gameNumber();
+}
+
 function guessCounter() {
   var display = document.getElementById("count");
   count++;
   display.innerHTML = count;
 }
 
-//new game declaration
-function newGame(){
-    count=0;
-    $("#count").text("0");
-    $("#guessList").text("");
+function guessMade() {
+  var getValue = $('#userGuess').val();
+  var newValue = +getValue;
+  //event.preventDefault();
+  $("#feedback").text("Make your Guess!");
+  if (isNaN(newValue)) {
+    $("#feedback").text("Please enter a number");
+    $('#userGuess').val('');
+    }
+  else {
+    $("<li>" + $('#userGuess').val() + "</li>").appendTo("#guessList");
+    $('#userGuess').val('');
+    guessCounter();
+  };
 }
 
-//guess list declaration
-function guessMade() {
-  event.preventDefault();
-  $("<li>" + $('#userGuess').val() + "</li>").appendTo("#guessList");
-  $('#userGuess').val('');
-}
+
 
 $(document).ready(function(){
-	
+  //generate random number
+  gameNumber();
+
 	//show modal instructions
   $(".what").click(function(){
     $(".overlay").fadeIn(1000);
@@ -41,11 +58,8 @@ $(document).ready(function(){
 
 	//on click of Guess button
   $("#guessButton").click(function() {
-    guessCounter(); //update guess counter
     guessMade(); //display the number just guessed
     //guessFeedback(); //provide hot or cold hint
-  });
-  
-
+  }); 
 });
 
