@@ -45,22 +45,22 @@ function guessFeedback() {
     $("#feedback").text("Correct!").css("background", "green");
   }*/
   if (guess === randomNumber) {
-  $("#feedback").text("Correct!").css("background", "green");
+  $("#feedback").text("Correct!").css("background", "#09b85f");
 }
   else if (guess <= (randomNumber+1) && guess >= (randomNumber-1)) {
-    $("#feedback").text("On Fire!").css("background", "red");
+    $("#feedback").text("On Fire!").css("background", "#f21a3d");
 }
   else if (guess <= (randomNumber+5) && guess >= (randomNumber-5)) {
-    $("#feedback").text("Hot").css("background", "orange");
+    $("#feedback").text("Hot").css("background", "#cc324b");
 }
 else if (guess <= (randomNumber+10) && guess >= (randomNumber-10)) {
-  $("#feedback").text("Warm").css("background", "yellow");
+  $("#feedback").text("Warm").css("background", "#f39c12");
 }
 else if (guess <= (randomNumber+20) && guess >= (randomNumber-20)) {
-  $("#feedback").text("Cold").css("background", "blue");
+  $("#feedback").text("Cold").css("background", "#6e93dd");
 }
   else {
-    $("#feedback").text("Ice Cold").css("background", "Aqua");
+    $("#feedback").text("Ice Cold").css("background", "#11a8ab");
   };
 }
 
